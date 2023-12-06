@@ -1,7 +1,7 @@
 # Godot-3d-Character-controller
 A simple fps controller for godot
 
-# Installtion
+# Installation
 1. Go to the Green Code button near the top right of screen and click it.
 2. Press the download as zip button and wait for the download to finish.
 3. Once it's finished go to where it downloaded and unzip it.
