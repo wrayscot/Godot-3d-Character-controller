@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyf0df0h8tn5r"]
+
+[ext_resource type="PackedScene" uid="uid://co53igjxiob08" path="res://character_body_3d.tscn" id="1_8rqnr"]
+[ext_resource type="Material" uid="uid://cw2a8wo1g211m" path="res://resources/material/node_3d.tres" id="2_oclw5"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_sqrtt"]
+
+[sub_resource type="Sky" id="Sky_i104y"]
+sky_material = SubResource("PhysicalSkyMaterial_sqrtt")
+
+[sub_resource type="Environment" id="Environment_unrfy"]
+background_mode = 2
+sky = SubResource("Sky_i104y")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c5nnv"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_8rqnr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(20, 1, 20)
+material = ExtResource("2_oclw5")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(2.225, 0, 0, 0, 2.225, 0, 0, 0, 2.225, 0, 0.5, 0)
+polygon = PackedVector2Array(0, 0, 0, 0, 1, 1, 1, 0)
+material = ExtResource("2_oclw5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.481907, 0.876223, 0, -0.876223, 0.481907, 0, 5.38438, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_unrfy")
+camera_attributes = SubResource("CameraAttributesPractical_c5nnv")
